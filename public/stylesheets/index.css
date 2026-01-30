@@ -1,0 +1,12 @@
+.section-movies {
+  background-image: url("/images/jurassic.jpg");
+  background-size: cover;   
+  background-position: center;     
+  background-repeat: no-repeat;
+  color: var(--white-color);
+  
+  article {
+    height: 92vh;
+    padding-block-end: 2rem;
+  }
+}

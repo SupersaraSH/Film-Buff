@@ -1,0 +1,29 @@
+:root {
+  --black-color: #1c202b;
+  --red-color: #b80302;
+  --yellow-color: #77563b;
+  --white-color: rgb(211, 210, 210);
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: var(--white-color);
+}
+
+a {
+  color: #00B7FF;
+}
+
+nav .btn {
+  background-color: var(--blue-color);
+  color: rgb(211, 210, 210);;
+}
+
+.navbar {
+  background-color: #1c202b;
+  --bs-navbar-color: rgb(211, 210, 210);
+  --bs-navbar-hover-color: #77563b;
+  --bs-navbar-active-color: #b80302;
+  font-size: 1.7rem;
+  --bs-navbar-padding-y: 0;
+}
