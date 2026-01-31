@@ -10,10 +10,13 @@ router.get('/', usersControllers.showUsers);
 /* show new register form */
 router.get('/register', usersControllers.showRegister);
 
-/* show new register form */
+/* send data register form */
 router.post('/register', uploadImage("users"), usersControllers.register);
 
 /* show new login form */
 router.get('/login', usersControllers.showLogin);
+
+/* show new login form */
+router.get('/userProfile/:user_id', usersControllers.showProfile);
 
 module.exports = router;

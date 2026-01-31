@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const connection = require('../config/db.js');
+const drawRating = require('../utils/drawRating.js');
 
 class usersController{
 
@@ -7,13 +8,66 @@ class usersController{
     res.render("users");
   };
 
+  showProfile = (req, res) =>{
+    const {user_id} = req.params
+    let sql = `SELECT u.user_id, u.user_name, u.last_name, u.email, 
+              u.description, u.password, u.avatar, f.film_id, f.title,
+              f.review, f.rating, f.format, f.release_year, f.poster, 
+              f.user_id as f_user_id 
+              FROM user AS u LEFT JOIN film AS f 
+              ON u.user_id = f.user_id AND f.film_is_deleted = 0
+              WHERE u.user_is_deleted = 0 AND u.user_id = ? `
+
+    connection.query(sql, [user_id], (err, result)=>{
+      if(err){
+        throw err;
+      }else{
+        //reduce de la data del user
+        const {user_id, user_name, last_name, email, description, password, avatar} = result[0]
+        let user = {
+          user_id,
+          user_name,
+          last_name,
+          email, 
+          description,
+          password,
+          avatar
+          
+        }
+
+        //reduce de las peliculas
+        let films = [];
+        let temporalFilm = {};
+        
+        result.forEach((elem)=>{
+          if(elem.film_id){
+            //pintar rating
+            let starsRating = drawRating(elem.rating);
+            temporalFilm={
+              film_id: elem.film_id,
+              title: elem.title,
+              review: elem.review,
+              rating: starsRating,
+              format: elem.format,
+              release_year: elem.release_year,
+              poster: elem.poster,
+              user_id: user_id
+            };
+            films.push(temporalFilm);
+          };
+        });
+
+        res.render('userProfile', {user, films});
+      };
+
+    });
+  };
+
   showRegister = (req, res) =>{
     res.render("formRegister");
   };
 
   register = (req,res)=> {
-    console.log("Post Register data:", req.body);
-
     const {
       user_name,
       last_name,
@@ -28,11 +82,11 @@ class usersController{
     if (!user_name || !email || !password) {
       res.render("formRegister", {
         message:
-          "Debes rellenar todos lo campos obligatorios.",
+          "You must fill in all required fields.",
       });
     } else if (password != repPassword) {
       res.render("formRegister", {
-        message: "Las password no coinciden.",
+        message: "The passwords do not match.",
       });
     } else {
       //encriptar la password
@@ -41,7 +95,6 @@ class usersController{
         if (err) {
           throw err;
         } else {
-          console.log("hhhaaassshh", hashedPassword);
           //guardar los datos en la base de datos
           let sql = `INSERT INTO user 
         (user_name, last_name, email, description, password) 
@@ -70,7 +123,7 @@ class usersController{
           connection.query(sql, values, (errSql, result) => {
             if (errSql) {
               if (errSql.errno == 1062) {
-                res.render("formRegister", { message: "Email duplicado" });
+                res.render("formRegister", { message: "Duplicate email." });
               } else {
                 throw errSql;
               }
