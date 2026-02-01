@@ -11,108 +11,110 @@
   <body>
     <%- include('modules/navbar') %>
 
-    <section class="section-edit">
-      <div class="container-xxl">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex justify-content-center">
-              <form 
-                class="w-50 border border-1 rounded-2 m-4 p-4"
-                action="/movies/editMovie/<%= film.film_id %>/<%= film.user_id %>"
-                method="post"
-                enctype="multipart/form-data"
-              >
-              <h2>Edit your movie</h2>
-              <div class="mb-3">
-                <label for="inputTitle" class="form-label"
-                  >Title:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputTitle"
-                  aria-describedby="title"
-                  name="title"
-                  value="<%= film.title %>"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="inputReview" class="form-label"
-                >Review:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputReview"
-                  aria-describedby="review"
-                  name="review"
-                  value="<%= film.review %>"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="iputRrating" class="form-label"
-                >Rating</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="iputRrating"
-                  aria-describedby="ratingHelp"
-                  name="rating"
-                  value="<%= film.rating %>"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="inputFormat" class="form-label"
-                >Format</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputFormat"
-                  aria-describedby="formatHelp"
-                  name="format"
-                  value="<%= film.format %>"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="inputRelease" class="form-label"
-                >Release year</label
+    <main>
+      <section class="section-edit">
+        <div class="container-xxl">
+          <div class="row">
+            <div class="col">
+              <div class="d-flex justify-content-center">
+                <form
+                  class="border border-1 rounded-2 m-5 p-4"
+                  action="/movies/editMovie/<%= film.film_id %>/<%= film.user_id %>"
+                  method="post"
+                  enctype="multipart/form-data"
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputRelease"
-                  aria-describedby="release_yearHelp"
-                  name="release_year"
-                  value="<%= film.release_year %>"
-                />
-              </div>
-              <div class="mb-3">
-                  <label for="inputPoster" class="form-label image">Add image</label>
+                <h2>Edit your movie</h2>
+                <div class="mb-3">
+                  <label for="inputTitle" class="form-label"
+                    >Title:</label>
                   <input
-                    type="file"
-                    class="form-control d-none"
-                    id="inputPoster"
-                    name="img"
+                    type="text"
+                    class="form-control"
+                    id="inputTitle"
+                    aria-describedby="title"
+                    name="title"
+                    value="<%= film.title %>"
                   />
-              </div>
-                <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
-                <div class="d-flex justify-content-center gap-5">
-                  <button type="submit" class="btn" >Aceptar</button>
-                  <button
-                    type="button"
-                    onclick="window.location.href='/'"
-                    class="btn"
-                    >Cancelar</button>
-                  <button
-                    type="reset"
-                    class="btn"
-                    >Limpiar</button>
                 </div>
-              </form>
+                <div class="mb-3">
+                  <label for="inputReview" class="form-label"
+                  >Review:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputReview"
+                    aria-describedby="review"
+                    name="review"
+                    value="<%= film.review %>"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="iputRrating" class="form-label"
+                  >Rating</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="iputRrating"
+                    aria-describedby="ratingHelp"
+                    name="rating"
+                    value="<%= film.rating %>"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="inputFormat" class="form-label"
+                  >Format</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputFormat"
+                    aria-describedby="formatHelp"
+                    name="format"
+                    value="<%= film.format %>"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="inputRelease" class="form-label"
+                  >Release year</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputRelease"
+                    aria-describedby="release_yearHelp"
+                    name="release_year"
+                    value="<%= film.release_year %>"
+                  />
+                </div>
+                <div class="mb-4">
+                    <label for="inputPoster" class="form-label image">Add image</label>
+                    <input
+                      type="file"
+                      class="form-control d-none"
+                      id="inputPoster"
+                      name="img"
+                    />
+                </div>
+                  <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
+                  <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
+                    <button type="submit" class="btn" >Aceptar</button>
+                    <button
+                      type="button"
+                      onclick="window.location.href=`/users/userProfile/<%= film.user_id %>`"
+                      class="btn"
+                      >Cancelar</button>
+                    <button
+                      type="reset"
+                      class="btn"
+                      >Limpiar</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
+    </main>
+    <%- include('modules/footer') %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -1,4 +1,7 @@
 .section-movies {
+  /* Para el hover: Permite posicionarlo libremente. */
+  /* hijo: position: absolute; */
+  position: relative;
   background-image:
   linear-gradient(
     0deg,
@@ -17,38 +20,79 @@
   background-size: cover;   
   background-position: top;     
   background-repeat: no-repeat;
-    
-  &:before {
+  
+  /*::before  crea un pseudo-elemento que se dibuja antes del contenido real del elemento */
+  /* capa extra encima del elemento */
+  &::before {
+    /* content: Obligatorio para que ::before exista. */
     content: "";
+
+    /* Permite posicionarlo libremente. */
+    /* padre debe tener: position: relative; */
     position: absolute;
+
+    /* Hace que el pseudo-elemento ocupe todo el tamaño del elemento padre. */
     inset: 0;
+
+    /* poner la misma configuración que en el padre, para que encajen las capas: */
     background-image: url("/images/jurassic3Light.png"
     );
     background-size: cover;   
     background-position: top;     
     background-repeat: no-repeat;
     
+    /*Invisible al inicio. */
     opacity: 0;
-    transition: opacity 0.3s;
+
+    /* El cambio de opoacidad será suave: 
+    Durará 0.3 segundos
+    Con animación lineal (misma velocidad todo el tiempo) */
+    transition: opacity 0.3s linear;
     pointer-events: none;
   }
 
+  /* Cuando el elemento padre recibe hover */
+  /* es decir, cuando pasa el ratón por encima: */
   &:hover::before {
-    opacity: .5;
+    /* cambia la opacidad */
+    opacity: .6;
   }
 
   h1 {
     color: var(--white-color);
     font-size: 5rem;
+
+    @media (width <= 576px) {
+      font-size: 4rem;
+    }
   }
   
   article {
     height: 92vh;
   }
 
-  .btn {
-    padding: 1rem 2rem;
-    color: var(--black-color);
+  .join-btn {
+    inline-size: 5.7rem;
+    block-size: 9rem;
+    background-image: url("/images/popcorn.png");
+    background-size: contain;     
+    background-repeat: no-repeat;
+    .btn {
+      line-height: 1.2;
+      margin: 4.7rem .9rem;
+      color: var(--black-color);
+      /* background-color: var(--white-color); */
+      font-size: 16px;
+      font-weight: bold;
+
+      &:hover {
+        color: var(--yellow-color);
+      } 
+    }
+
+    &:hover {
+        transform: scale(1.1);
+      } 
   }
 }
 
@@ -67,7 +111,6 @@
     
     .card-title{
       color: var(--black-color);
-
     }
 
     .btn {

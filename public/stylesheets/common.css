@@ -8,7 +8,6 @@
   --white-color: rgb(238, 238, 238);
 }
 
-
 h2, h3, h4, h5 {
   font-family: 'Bungee', serif;
   color: var(--red-color);
@@ -20,9 +19,13 @@ body {
   color: var(--white-color);
 }
 
+main{
+    min-height: calc(100vh - 112.8px);
+}
+
 nav .btn {
   color: var(--white-color);
-    --bs-btn-padding-x:0;
+  --bs-btn-padding-x:0;
 
   &:hover {
       color: var(--yellow-color);
@@ -53,18 +56,36 @@ nav .btn {
 }
 
 form {
+  width: 50%;
+   @media (width <= 675px) {
+      width: 75%;
+    }
+
   .image {
     &:hover {
       color: var(--yellow-color);
     }
   }
+
   .btn {
     color: var(--white-color);
 
     &:hover {
       color: var(--yellow-color);
     }
+
   }
+}
+
+footer {
+  background-color: var(--black-color);
+  a {
+    color: var(--white-color);
+  }
+}
+
+.msg-err {
+  color: var(--red-color);
 }
 
 
