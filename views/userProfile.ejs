@@ -11,20 +11,21 @@
   <body>
     <%- include('modules/navbar') %>
     
-    <section class="section-user">
+    <section class="section-user py-5">
       <div class="container-xxl">
         <div class="row">
-          <h2>Profile:</h2>
           <div class="col-6">
             <div class="center">
-              <img src="/images/users/<%= user.avatar?user.avatar:'default1.jpg' %>" alt="">
+              <img class="w-100" src="/images/users/<%= user.avatar?user.avatar:'default1.jpg' %>" alt="">
             </div>
           </div>
           <div class="col-6">
-            <p><%= user.user_name %> <%= user.last_name %></p>
-            <p><%= user.email %></p>
-            <p><%= user.description %></p>
-            <a href="/movies/addMovie/<%= user.user_id %>" class="btn btn-primary">Add Movie</a>
+            <div>
+              <p><%= user.user_name %> <%= user.last_name %></p>
+              <p><%= user.email %></p>
+              <p><%= user.description %></p>
+              <a href="/movies/addMovie/<%= user.user_id %>" class="btn">Add Movie</a>
+            </div>
           </div>
         </div>
       </div>
@@ -32,11 +33,11 @@
 
     <section class="section-movies py-5">
       <div class="container-xxl">
-        <div class="row">
-          <h2>Movies</h2>
+        <div class="row row-gap-5">
+          <h2 class="mb-0">Movies</h2>
           <% films.forEach((film)=>{ %>
           <div class="col-4">
-            <div class="card" style="width: 20rem;">
+            <div class="card mx-auto">
               <img src="/images/movies/<%= film.poster?film.poster:'film.png' %>" 
               class="card-img-top" alt="film image">
               <div class="card-body">
@@ -45,9 +46,9 @@
                 <p class="card-text">Rating: <%= film.rating %></p>
                 <p class="card-text">Format: <%= film.format %></p>
                 <p class="card-text">Release year: <%= film.release_year %></p>
-                <a href="/movies/editMovie/<%= film.film_id%>" class="btn btn-primary">Edit Movie</a>
-                <a href="/movies/delMovie/<%= film.film_id%>/<%=user.user_id%>/<%= film.poster?film.poster:'film.png' %>" class="btn btn-primary">Delete Movie</a>
-                <a href="/movies/delLogicMovie/<%= film.film_id%>/<%=user.user_id%>" class="btn btn-primary">Delete logic</a>
+                <a href="/movies/editMovie/<%= film.film_id%>" class="btn">Edit Movie</a>
+                <a href="/movies/delMovie/<%= film.film_id%>/<%=user.user_id%>/<%= film.poster?film.poster:'film.png' %>" class="btn">Delete Movie</a>
+                <a href="/movies/delLogicMovie/<%= film.film_id%>/<%=user.user_id%>" class="btn">Delete logic</a>
               </div>
             </div>
           </div>

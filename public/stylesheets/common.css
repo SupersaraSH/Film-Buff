@@ -1,29 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 :root {
   --black-color: #1c202b;
   --red-color: #b80302;
-  --yellow-color: #77563b;
-  --white-color: rgb(211, 210, 210);
+  --yellow-color: #ead500;
+  --white-color: rgb(238, 238, 238);
+}
+
+
+h2, h3, h4, h5 {
+  font-family: 'Bungee', serif;
+  color: var(--red-color);
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: var(--white-color);
-}
-
-a {
-  color: #00B7FF;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--black-color);
+  color: var(--white-color);
 }
 
 nav .btn {
-  background-color: var(--blue-color);
-  color: rgb(211, 210, 210);;
+  color: var(--white-color);
+    --bs-btn-padding-x:0;
+
+  &:hover {
+      color: var(--yellow-color);
+  }
 }
 
 .navbar {
-  background-color: #1c202b;
-  --bs-navbar-color: rgb(211, 210, 210);
-  --bs-navbar-hover-color: #77563b;
-  --bs-navbar-active-color: #b80302;
+  background-color: var(--black-color);
+  --bs-navbar-color: var(--white-color);
+  --bs-navbar-hover-color: var(--yellow-color);
+  --bs-navbar-active-color: var(--red-color);
   font-size: 1.7rem;
   --bs-navbar-padding-y: 0;
+  --bs-navbar-toggler-icon-bg: url("/images/icon-movie.png");
 }
+
+.navbar-toggler {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  line-height: 1;
+  border: var(--bs-border-width) solid var(--white-color);
+  border-radius: 0;
+  transition: var(--bs-navbar-toggler-transition);
+}
+.navbar-toggler-icon {
+  background-image: url("/images/icon-movie.png");
+  width: 2rem;
+}
+
+

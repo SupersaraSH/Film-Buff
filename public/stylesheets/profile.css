@@ -1,0 +1,46 @@
+.section-user {
+  font-size: 20px;
+  .center {
+    background-color: var(--white-color);
+    padding: 2rem 2rem 4rem 2rem;
+
+  }
+  .btn {
+    background-color: var(--red-color);
+    color: var(--white-color);
+
+    &:hover {
+      color: var(--black-color);
+    }
+  }
+}
+
+.section-movies {
+  .card {
+    background-color: var(--white-color);
+    max-width: 24rem;
+    min-height: 40rem;
+    max-height: 40rem;
+    border-radius: 0;
+    padding: 1rem;
+    box-shadow: -4px 4px 0 3px var(--red-color);
+    
+    .card-title{
+      color: var(--black-color);
+    }
+
+    .btn {
+      background-color: var(--white-color);
+      --bs-btn-hover-border-color: #c6b604;
+      color: var(--red-color);
+      font-weight: bold;
+    }
+
+    img {
+      border-radius: 0;
+      max-height: 20rem;
+      min-height: 18rem;
+      object-fit: cover;
+    }
+  }
+}

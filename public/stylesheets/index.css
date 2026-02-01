@@ -1,12 +1,78 @@
 .section-movies {
-  background-image: url("/images/jurassic.jpg");
+  background-image:
+  linear-gradient(
+    0deg,
+    rgba(28, 32, 43, 0) 83%, 
+    rgba(28, 32, 43, .8) 97%, 
+    rgba(28, 32, 43, 1) 100%),
+  linear-gradient(
+    180deg,
+    rgba(28, 32, 43, 0) 55%, 
+    rgba(28, 32, 43, 1) 80%, 
+    rgba(28, 32, 43, 1) 100%),
+
+  
+  url("/images/jurassic2.jpg"
+  );
   background-size: cover;   
-  background-position: center;     
+  background-position: top;     
   background-repeat: no-repeat;
-  color: var(--white-color);
+    
+
+  h1 {
+    color: var(--white-color);
+    font-size: 5rem;
+  }
   
   article {
     height: 92vh;
-    padding-block-end: 2rem;
+  }
+}
+
+.section-movies::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/jurassic3Light.png"
+  );
+  background-size: cover;   
+  background-position: top;     
+  background-repeat: no-repeat;
+  
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+
+.section-movies:hover::before {
+  opacity: .5;
+}
+
+.section-addict {
+  .card {
+    background-color: var(--white-color);
+    max-width: 20rem;
+    min-height: 30rem;
+    border-radius: 0;
+    padding: 1rem;
+    box-shadow: -4px 4px 0 3px var(--red-color);
+    /* border: 1px solid var(--yellow-color); */
+
+    
+    .card-title{
+      color: var(--black-color);
+
+    }
+
+    .btn {
+      background-color: var(--white-color);
+      --bs-btn-hover-border-color: #c6b604;
+      color: var(--red-color);
+      font-weight: bold;
+    }
+    .card-img-top {
+      border-radius: 0;
+    }
   }
 }
