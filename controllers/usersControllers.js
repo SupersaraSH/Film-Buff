@@ -128,7 +128,7 @@ class usersController{
                 throw errSql;
               }
             } else {
-              res.render("/");
+              res.redirect(`/userProfile/${user_id}`);
             }
           });
         }

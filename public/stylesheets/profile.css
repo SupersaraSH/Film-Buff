@@ -1,8 +1,9 @@
 .section-user {
+  margin-block-start: 2rem;
   font-size: 20px;
   .center {
     background-color: var(--white-color);
-    padding: 2rem 2rem 4rem 2rem;
+    padding: 2rem 2rem 5.3rem 2rem;
 
   }
   .btn {
@@ -15,12 +16,16 @@
   }
 }
 
+.separator {
+  background-color: var(--red-color);
+  width: 200px;
+  height: 5px;
+}
+
 .section-movies {
   .card {
     background-color: var(--white-color);
     max-width: 24rem;
-    min-height: 40rem;
-    max-height: 40rem;
     border-radius: 0;
     padding: 1rem;
     box-shadow: -4px 4px 0 3px var(--red-color);
@@ -33,14 +38,11 @@
       background-color: var(--white-color);
       --bs-btn-hover-border-color: #c6b604;
       color: var(--red-color);
-      font-weight: bold;
+      border: 2px solid var(--red-color);
     }
 
     img {
       border-radius: 0;
-      max-height: 20rem;
-      min-height: 18rem;
-      object-fit: cover;
     }
   }
 }

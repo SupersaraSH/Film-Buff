@@ -18,6 +18,24 @@
   background-position: top;     
   background-repeat: no-repeat;
     
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/jurassic3Light.png"
+    );
+    background-size: cover;   
+    background-position: top;     
+    background-repeat: no-repeat;
+    
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: .5;
+  }
 
   h1 {
     color: var(--white-color);
@@ -27,33 +45,20 @@
   article {
     height: 92vh;
   }
-}
 
-.section-movies::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/images/jurassic3Light.png"
-  );
-  background-size: cover;   
-  background-position: top;     
-  background-repeat: no-repeat;
-  
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+  .btn {
+    padding: 1rem 2rem;
+    color: var(--black-color);
+  }
 }
 
 
-.section-movies:hover::before {
-  opacity: .5;
-}
 
 .section-addict {
   .card {
     background-color: var(--white-color);
     max-width: 20rem;
-    min-height: 30rem;
+    min-height: 32rem;
     border-radius: 0;
     padding: 1rem;
     box-shadow: -4px 4px 0 3px var(--red-color);
@@ -73,6 +78,8 @@
     }
     .card-img-top {
       border-radius: 0;
+      max-height: 16rem;
+      object-fit: cover;
     }
   }
 }

@@ -52,4 +52,19 @@ nav .btn {
   width: 2rem;
 }
 
+form {
+  .image {
+    &:hover {
+      color: var(--yellow-color);
+    }
+  }
+  .btn {
+    color: var(--white-color);
+
+    &:hover {
+      color: var(--yellow-color);
+    }
+  }
+}
+
 

@@ -10,7 +10,6 @@
   </head>
   <body>
     <%- include('modules/navbar') %>
-    <h2>Edit Movie</h2>
 
     <section class="section-edit">
       <div class="container-xxl">
@@ -18,11 +17,12 @@
           <div class="col">
             <div class="d-flex justify-content-center">
               <form 
-                class="w-25 border border-1 rounded-2 m-5 p-2"
+                class="w-50 border border-1 rounded-2 m-4 p-4"
                 action="/movies/editMovie/<%= film.film_id %>/<%= film.user_id %>"
                 method="post"
                 enctype="multipart/form-data"
               >
+              <h2>Edit your movie</h2>
               <div class="mb-3">
                 <label for="inputTitle" class="form-label"
                   >Title:</label>
@@ -85,13 +85,13 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="inputPoster" class="form-label">Image</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  id="inputPoster"
-                  name="img"
-                />
+                  <label for="inputPoster" class="form-label image">Add image</label>
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="inputPoster"
+                    name="img"
+                  />
               </div>
                 <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
                 <div class="d-flex justify-content-center gap-5">

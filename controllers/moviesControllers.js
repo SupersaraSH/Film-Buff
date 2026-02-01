@@ -242,7 +242,7 @@ class MoviesController{
             throw err;
         }else{
           if (file != "film.png") {
-            deleteFile(file = file, folder = "movies");
+            deleteFile(file,"movies");
           }
             res.redirect(`/users/userProfile/${user_id}`);
         }

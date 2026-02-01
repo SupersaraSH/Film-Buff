@@ -10,18 +10,18 @@
   </head>
   <body>
     <%- include('modules/navbar') %>
-    <h2>Register</h2>
-
+    
     <section class="section-register">
       <div class="container-xxl">
         <div class="d-flex justify-content-center">
           <form 
-          class="w-25 border border-1 rounded-2 m-5 p-2"
+          class="w-50 border border-1 rounded-2 m-4 p-4"
           action="/users/register"
           method="post"
           enctype="multipart/form-data"
           >
-            <div class="mb-3">
+          <h2 class="mb-4">Join us!!!</h2>
+          <div class="mb-3">
               <label for="inputName" class="form-label"
                 >Name:</label>
                 <input
@@ -92,10 +92,10 @@
                   />
               </div>
               <div class="mb-3">
-                <label for="inputImg" class="form-label">Image</label>
+                <label for="inputImg" class="form-label image">Add image</label>
                 <input
                   type="file"
-                  class="form-control"
+                  class="form-control d-none"
                   id="inputImg"
                   name="img"
                 />
