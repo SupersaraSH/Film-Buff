@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Film buff</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/oneMovie.css">
+  </head>
+  <body>
+    <%- include('modules/navbar') %>
+    
+    <main>
+      <section class="section-film">
+        <div class="container-xxl">
+          <div class="row justify-content-center">
+            <h2 class="pb-4"><%= film.title %></h2>
+            <div class="col-12 col-lg-5 p-0">
+              <div class="card mx-auto">
+                <img class="w-100" src="/images/movies/<%= film.poster?film.poster:'film.png' %>" alt="">
+              </div>
+            </div>
+            <div class="col-12 col-lg-5 p-5 p-lg-0">
+              <div>
+                <p><%= film.review %></p>
+                <p><%= film.rating %></p>
+                <p><%= film.format %></p>
+                <p><%= film.release_year %></p>
+                <div class="row row-cols-1 mt-auto gap-4">
+                  <div class="col">
+                    <a href="/movies/editMovie/<%= film.film_id%>" class="btn">Edit</a>
+                  </div>
+                  <div class="col">
+                    <a href="/movies/delMovie/<%= film.film_id%>/<%=film.film_id%>/<%= film.poster?film.poster:'film.png' %>" class="btn">Delete</a>
+                  </div>
+                  <div class="col">
+                    <a href="/movies/delLogicMovie/<%= film.film_id%>/<%=film.film_id%>" class="btn">Del.logic</a>
+                  </div>
+                </div>
+                <a href="/users/userProfile/<%= film.user_id %>" class="btn my-4">Movie addict</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <%- include('modules/footer') %>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+  </body>
+</html>

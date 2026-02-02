@@ -1,0 +1,14 @@
+.section-movies {
+  .movie-box {
+    box-shadow: -6px 6px var(--white-color);
+     &:hover {
+      box-shadow: inset -6px 6px 0 15px var(--red-color);
+    }
+
+    img {
+      &:hover {
+        transform: scale(.96);
+      }
+    }
+  }
+}

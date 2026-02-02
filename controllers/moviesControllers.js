@@ -1,10 +1,51 @@
 const connection = require('../config/db.js');
 const deleteFile = require('../utils/delImage');
+const drawRating = require('../utils/drawRating.js');
 
 class MoviesController{
 
   showMovies = (req, res) =>{
-    res.render("movies");
+    let sql = "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0";
+    connection.query(sql, (err, result)=> {
+      if(err){
+        throw err
+      }else{
+        res.render('movies', {films:result});
+      };
+    });
+  };
+
+  selectMovies = (req, res) => {
+    const {order_by} = req.body;
+    console.log(order_by);
+
+    let sql = `SELECT film_id, title, poster 
+              FROM film 
+              WHERE film_is_deleted = 0 
+              order by ${order_by} asc`;
+
+    connection.query(sql, (err, result)=> {
+      if(err){
+        throw err
+      }else{
+        console.log(result);
+        res.render('moviesSelect', {films:result});
+      };
+    });
+
+  };
+
+  showOneMovie = (req, res) =>{
+    const {film_id} = req.params;
+    let sql = "SELECT * FROM film WHERE film_id = ?";
+    connection.query(sql, [film_id], (err, result)=> {
+      if(err){
+        throw err
+      }else{
+        result[0].rating = drawRating(result[0].rating);
+        res.render('oneMovie', {film:result[0]});
+      };
+    });
   };
 
   showAddMovie = (req, res)=> {
@@ -89,12 +130,11 @@ class MoviesController{
   }
 
   showAddMovieSelect = (req, res)=> {
-    let sql = 'SELECT user_id, user_name, last_name FROM user WHERE user_is_deleted = 0'
+    let sql = 'SELECT user_id, user_name, last_name FROM user WHERE user_is_deleted = 0';
       connection.query(sql, (err, result)=>{
         if(err){
           throw err
         }else{
-          console.log("showAddMovieSelect", result);
           res.render('formNewMovieSelect', {users:result});
         };
       });

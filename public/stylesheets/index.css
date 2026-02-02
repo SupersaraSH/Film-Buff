@@ -63,7 +63,7 @@
     font-size: 5rem;
 
     @media (width <= 576px) {
-      font-size: 4rem;
+      font-size: 2.7rem;
     }
   }
   

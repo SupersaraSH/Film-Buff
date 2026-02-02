@@ -1,0 +1,34 @@
+main{
+    min-height: calc(100vh - 144.8px);
+}
+
+.section-film {
+  margin-block-start: 2rem;
+  font-size: 20px;
+
+  h2 {
+    margin-inline-start: 17rem;
+    @media (width <= 992px) {
+      margin-inline-start: 0;
+      text-align: center;
+    }
+  }
+
+  .card {
+    background-color: var(--white-color);
+    max-width: 24rem;
+    border-radius: 0;
+    padding: 1rem;
+    box-shadow: -4px 4px 0 3px var(--red-color);
+  }
+  
+  .btn {
+    background-color: var(--red-color);
+    color: var(--white-color);
+    min-width: 9rem;
+
+    &:hover {
+      color: var(--black-color);
+    }
+  }
+}

@@ -20,7 +20,7 @@
                 <img class="w-100" src="/images/users/<%= user.avatar?user.avatar:'default1.jpg' %>" alt="">
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12  col-lg-6">
               <div>
                 <p><%= user.user_name %> <%= user.last_name %></p>
                 <p><%= user.email %></p>
@@ -41,8 +41,10 @@
             <% films.forEach((film)=>{ %>
             <div class="col-12 col-md-6 col-xl-4">
               <div class="card mx-auto">
-                <img src="/images/movies/<%= film.poster?film.poster:'film.png' %>"
-                class="card-img-top" alt="film image">
+                <a href="/movies/movie/<%= film.film_id %>">
+                  <img class="w-100" src="/images/movies/<%= film.poster?film.poster:'film.png' %>"
+                  alt="film image">
+                </a>
                 <div class="card-body">
                   <h5 class="card-title"><%= film.title %></h5>
                   <p class="card-text">Review: <%= film.review %></p>

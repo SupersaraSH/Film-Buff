@@ -5,6 +5,11 @@
     background-color: var(--white-color);
     padding: 2rem 2rem 5.3rem 2rem;
 
+    img {
+      max-height: 25rem;
+      object-fit: cover;
+    }
+
   }
   .btn {
     background-color: var(--red-color);
