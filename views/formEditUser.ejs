@@ -6,104 +6,80 @@
     <title>Film buff</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/common.css">
-    <link rel="stylesheet" href="/stylesheets/newMovie.css">
+    <link rel="stylesheet" href="/stylesheets/editMovie.css">
   </head>
   <body>
     <%- include('modules/navbar') %>
+
     <main>
-      <section class="section-new">
+      <section class="section-edit">
         <div class="container-xxl">
           <div class="row">
             <div class="col">
               <div class="d-flex justify-content-center">
                 <form
                   class="border border-1 rounded-2 m-5 p-4"
-                  action="/movies/addMovie/<%= user_id %>"
+                  action="/users/editUser/<%= user.user_id %>"
                   method="post"
                   enctype="multipart/form-data"
                 >
-                <h2 class="mb-3">Add movie</h2>
+                <h2>Edit your profile</h2>
                 <div class="mb-3">
-                  <label for="inputTitle" class="form-label"
-                  >Title:</label>
+                  <label for="inputName" class="form-label"
+                    >Name:</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="inputTitle"
-                    aria-describedby="title"
-                    name="title"
+                    id="inputName"
+                    aria-describedby="user_name"
+                    name="user_name"
+                    value="<%= user.user_name %>"
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="inputReview" class="form-label"
-                  >Review:</label>
+                  <label for="LastinputName" class="form-label"
+                    >Last name:</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="inputReview"
-                    aria-describedby="review"
-                    name="review"
+                    id="LastinputName"
+                    aria-describedby="last_name"
+                    name="last_name"
+                    value="<%= user.last_name %>"
                   />
-                  </div>
+                </div>
                 <div class="mb-3">
-                  <label for="iputRrating" class="form-label"
-                  >Rating</label>
+                  <label for="inputDescription" class="form-label"
+                  >Description:</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="iputRrating"
-                    aria-describedby="ratingHelp"
-                    name="rating"
+                    id="inputDescription"
+                    aria-describedby="description"
+                    name="description"
+                    value="<%= user.description %>"
                   />
-                  </div>
-                  <div class="mb-3">
-                    <label for="inputFormat" class="form-label"
-                    >Format</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputFormat"
-                      aria-describedby="formatHelp"
-                      name="format"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="inputRelease" class="form-label"
-                    >Release year</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputRelease"
-                      aria-describedby="release_yearHelp"
-                      name="release_year"
-                    />
-                  </div>
-      
-                  <div class="mb-1">
-                    <label for="inputPoster" class="form-label image"
-                    >Add image</label>
-                    <input
-                      type="file"
-                      class="form-control d-none"
-                      id="inputPoster"
-                      name="img"
-                    />
-                  </div>
+                </div>
+                <div class="mb-4">
+                  <label for="inputAvatar" class="form-label image">Add image</label>
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="inputAvatar"
+                    name="img"/>
+                </div>
                   <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
-
                   <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
                     <button type="submit" class="btn" >Aceptar</button>
                     <button
                       type="button"
-                      onclick="window.location.href=`/users/userProfile/<%= user_id %>`"
+                      onclick="window.location.href=`/users/userProfile/<%= user.user_id %>`"
                       class="btn"
-                      >Cancelar
-                    </button>
+                      >Cancelar</button>
                     <button
                       type="reset"
                       class="btn"
-                      >Limpiar
-                    </button>
+                      >Limpiar</button>
                   </div>
                 </form>
               </div>
@@ -113,7 +89,6 @@
       </section>
     </main>
     <%- include('modules/footer') %>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

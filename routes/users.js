@@ -14,9 +14,14 @@ router.get('/register', usersControllers.showRegister);
 router.post('/register', uploadImage("users"), usersControllers.register);
 
 /* show new login form */
+/* SIN TERMINAR */
 router.get('/login', usersControllers.showLogin);
 
 /* show new login form */
 router.get('/userProfile/:user_id', usersControllers.showProfile);
+
+router.get('/editUser/:user_id', usersControllers.showEditUser);
+
+router.post('/editUser/:user_id', uploadImage("users"), usersControllers.editUser);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const connection = require('../config/db.js');
 const drawRating = require('../utils/drawRating.js');
+const deleteFile = require('../utils/delImage');
 
 class usersController{
 
@@ -138,6 +139,61 @@ class usersController{
 
   showLogin = (req, res) =>{
     res.render("formLogin");
+  };
+
+  showEditUser = (req, res) =>{
+    const {user_id} = req.params;
+
+    let sql = 'SELECT * FROM user WHERE user_id = ?'
+    connection.query(sql, [user_id], (err, result)=>{
+      if(err){
+        throw err
+      }else{
+        res. render("formEditUser", {user:result[0]})
+      }
+    });
+  };
+
+  editUser = (req, res) => {
+    const {user_name, last_name, description} = req.body;
+    const {user_id} = req.params;
+    let user = {user_name, last_name, description};
+
+    if (!user_name || !last_name) {
+      res.render("formEditUser", {user,
+      message:
+        "You cannot leave the name or surname field blank.",
+    });
+
+    } else {
+      let sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ? WHERE user_id=?';
+      let values = [user_name, last_name, description, user_id];
+
+      if(req.file){
+        //si se cambia la foto, borrar la antigua de la carpeta
+        let sqlAvatar = `SELECT avatar FROM user WHERE user_id= ${user_id}`
+        connection.query(sqlAvatar, (err, result)=>{
+          if(err){
+            throw err
+          }else{
+            const {avatar} = result[0];
+            console.log(avatar);
+            deleteFile(avatar,"users");
+          };
+        });
+
+        sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ?, avatar = ? WHERE user_id=?';
+        values = [user_name, last_name, description, req.file.filename, user_id];
+      };
+
+      connection.query(sql, values, (err, result)=>{
+        if(err){
+            throw err;
+        }else{
+          res.redirect(`/users/userProfile/${user_id}`);
+        };
+      });
+    };
   };
 
 };

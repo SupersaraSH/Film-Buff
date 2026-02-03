@@ -37,4 +37,6 @@ router.get('/delMovie/:film_id/:user_id/:file', moviesControllers.delMovie);
 //borrado lógico una película.
 router.get('/delLogicMovie/:film_id/:user_id', moviesControllers.delLogicMovie);
 
+router.get('/')
+
 module.exports = router;

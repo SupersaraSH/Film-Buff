@@ -18,114 +18,114 @@
             <div class="col">
               <div class="d-flex justify-content-center">
                 <form
-                class="border border-1 rounded-2 m-3 p-3"
-                action="/movies/addMovieSelect"
-                method="post"
-                enctype="multipart/form-data"
+                  class="border border-1 rounded-2 m-3 p-3"
+                  action="/movies/addMovieSelect"
+                  method="post"
+                  enctype="multipart/form-data"
                 >
                 <h2 class="mb-2">Add movie</h2>
-                  <div class="mb-3">
-                    <label for="inputTitle" class="form-label"
-                      >Select a user</label
-                    >
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                      name="user_id"
-                    >
-                    <option value="" selected disabled>Select a user</option>
-                    <% users.forEach((user)=>{ %>
-                        <option
-                        value="<%= user.user_id %>">
-                          <%= user.user_name %> <%= user.last_name %>
-                        </option>
-                    <% }) %>
-                </select>
-                  </div>
                 <div class="mb-3">
                   <label for="inputTitle" class="form-label"
-                    >Title:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputTitle"
-                      aria-describedby="title"
-                      name="title"
-                    />
-                  </div>
+                  >Select a user</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    name="user_id"
+                  >
+                  <option value="" selected disabled>Select a user</option>
+
+                  <% users.forEach((user)=>{ %>
+                    <option
+                    value="<%= user.user_id %>">
+                      <%= user.user_name %> <%= user.last_name %>
+                    </option>
+                  <% }) %>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="inputTitle" class="form-label"
+                  >Title:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputTitle"
+                    aria-describedby="title"
+                    name="title"
+                  />
+                </div>
                 <div class="mb-3">
                   <label for="inputReview" class="form-label"
-                    >Review:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputReview"
-                      aria-describedby="review"
-                      name="review"
-                    />
-                  </div>
+                  >Review:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputReview"
+                    aria-describedby="review"
+                    name="review"
+                  />
+                </div>
                 <div class="mb-3">
                   <label for="iputRrating" class="form-label"
                   >Rating</label
                   >
                   <input
-                  type="text"
-                  class="form-control"
-                  id="iputRrating"
-                  aria-describedby="ratingHelp"
-                  name="rating"
+                    type="text"
+                    class="form-control"
+                    id="iputRrating"
+                    aria-describedby="ratingHelp"
+                    name="rating"
                   />
-                  </div>
-                  <div class="mb-3">
-                    <label for="inputFormat" class="form-label"
-                      >Format</label
+                </div>
+                <div class="mb-3">
+                  <label for="inputFormat" class="form-label"
+                    >Format</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputFormat"
+                    aria-describedby="formatHelp"
+                    name="format"
+                  />
+                </div>
+                <div class="mb-3">
+                    <label for="inputRelease" class="form-label"
+                    >Release year</label
                     >
                     <input
-                      type="text"
-                      class="form-control"
-                      id="inputFormat"
-                      aria-describedby="formatHelp"
-                      name="format"
-                    />
-                  </div>
-                  <div class="mb-3">
-                      <label for="inputRelease" class="form-label"
-                      >Release year</label
-                      >
-                      <input
                       type="text"
                       class="form-control"
                       id="inputRelease"
                       aria-describedby="release_yearHelp"
                       name="release_year"
-                      />
-                  </div>
-      
-                  <div class="mb-0">
-                    <label for="inputPoster" class="form-label image">Add image</label>
-                    <input
-                      type="file"
-                      class="form-control d-none"
-                      id="inputPoster"
-                      name="img"
                     />
-                  </div>
-                  <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
-                  <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
-                    <button type="submit" class="btn" >Aceptar</button>
-                    <button
+                </div>
+                <div class="mb-0">
+                  <label for="inputPoster" class="form-label image">Add image</label>
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="inputPoster"
+                    name="img"
+                  />
+                </div>
+                <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
+                <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
+                  <button type="submit" class="btn" >Aceptar</button>
+                  <button
                     type="button"
                     onclick="window.location.href='/'"
                     class="btn"
-                    >Cancelar</button>
-                    <button
+                    >Cancelar
+                  </button>
+                  <button
                     type="reset"
                     class="btn"
-                    >Limpiar</button>
-                  </div>
+                    >Limpiar
+                  </button>
+                </div>
                 </form>
               </div>
-      
             </div>
           </div>
         </div>

@@ -16,104 +16,106 @@
         <div class="container-xxl">
           <div class="d-flex justify-content-center">
             <form
-            class="border border-1 rounded-2 m-3 p-3"
-            action="/users/register"
-            method="post"
-            enctype="multipart/form-data"
+              class="border border-1 rounded-2 m-3 p-3"
+              action="/users/register"
+              method="post"
+              enctype="multipart/form-data"
             >
             <h2 class="mb-3">Join us!!!</h2>
             <div class="mb-3">
-                <label for="inputName" class="form-label"
-                  >Name:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputName"
-                    aria-describedby="user name"
-                    name="user_name"
-                  />
-                </div>
+              <label for="inputName" class="form-label"
+                >Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputName"
+                  aria-describedby="user name"
+                  name="user_name"
+                />
+              </div>
               <div class="mb-3">
                 <label for="inputLastName" class="form-label"
-                  >Last name:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputLastName"
-                    aria-describedby="last name"
-                    name="last_name"
-                  />
-                </div>
+                >Last name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputLastName"
+                  aria-describedby="last name"
+                  name="last_name"
+                />
+              </div>
               <div class="mb-3">
                 <label for="inputEmail" class="form-label"
                 >Email</label
                 >
                 <input
-                type="text"
-                class="form-control"
-                id="inputEmail"
-                aria-describedby="emailHelp"
-                name="email"
+                  type="text"
+                  class="form-control"
+                  id="inputEmail"
+                  aria-describedby="emailHelp"
+                  name="email"
                 />
-                </div>
-                <div class="mb-3">
-                  <label for="inputDescription" class="form-label"
-                    >Description</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputDescription"
-                    aria-describedby="descripionHelp"
-                    name="description"
-                  />
-                </div>
-                <div class="mb-3">
-                    <label for="inputPass" class="form-label"
-                    >Password</label
-                    >
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="inputPass"
-                    aria-describedby="passHelp"
-                    name="password"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="repPass" class="form-label"
-                    >Repite Password</label
-                    >
-                    <input
-                    type="text"
-                    class="form-control"
-                    id="inputRepPass"
-                    aria-describedby="repPassHelp"
-                    name="repPassword"
-                    />
-                </div>
-                <div class="mb-1">
-                  <label for="inputImg" class="form-label image">Add image</label>
-                  <input
-                    type="file"
-                    class="form-control d-none"
-                    id="inputImg"
-                    name="img"
-                  />
-                </div>
-                <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
-                <div class="d-flex justify-content-center gap-0 gap-sm-1 gap-lg-5">
-                  <button type="submit" class="btn" >Aceptar</button>
-                  <button
+              </div>
+              <div class="mb-3">
+                <label for="inputDescription" class="form-label"
+                  >Description</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputDescription"
+                  aria-describedby="descripionHelp"
+                  name="description"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputPass" class="form-label"
+                >Password</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputPass"
+                  aria-describedby="passHelp"
+                  name="password"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="repPass" class="form-label"
+                >Repite Password</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputRepPass"
+                  aria-describedby="repPassHelp"
+                  name="repPassword"
+                />
+              </div>
+              <div class="mb-1">
+                <label for="inputImg" class="form-label image">Add image</label>
+                <input
+                  type="file"
+                  class="form-control d-none"
+                  id="inputImg"
+                  name="img"
+                />
+              </div>
+              <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
+              <div class="d-flex justify-content-center gap-0 gap-sm-1 gap-lg-5">
+                <button type="submit" class="btn" >Aceptar</button>
+                <button
                   type="button"
                   onclick="window.location.href='/'"
                   class="btn"
-                  >Cancelar</button>
-                  <button
+                  >Cancelar
+                </button>
+                <button
                   type="reset"
                   class="btn"
-                  >Limpiar</button>
-                </div>
+                  >Limpiar
+                </button>
+              </div>
             </form>
           </div>
         </div>

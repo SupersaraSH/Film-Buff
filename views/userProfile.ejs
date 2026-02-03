@@ -25,7 +25,10 @@
                 <p><%= user.user_name %> <%= user.last_name %></p>
                 <p><%= user.email %></p>
                 <p><%= user.description %></p>
-                <a href="/movies/addMovie/<%= user.user_id %>" class="btn">Add Movie</a>
+                <div class="d-flex flex-column align-items-start gap-3">
+                  <a href="/users/editUser/<%= user.user_id %>" class="btn">Edit profile</a>
+                  <a href="/movies/addMovie/<%= user.user_id %>" class="btn">Add Movie</a>
+                </div>
               </div>
             </div>
           </div>

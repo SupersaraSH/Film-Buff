@@ -5,19 +5,31 @@ const drawRating = require('../utils/drawRating.js');
 class MoviesController{
 
   showMovies = (req, res) =>{
-    let sql = "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0";
+    const {filter} = req.query;
+
+    let sql= "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0";
+
+    if (filter == "title"){
+      sql = "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0 order by title asc, title ASC;";
+
+    } else if (filter == "rating") {
+      sql = "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0 order by rating, title ASC;";
+
+    }else if (filter == "release_year") {
+      sql = "SELECT film_id, user_id, poster FROM film WHERE film_is_deleted = 0 order by release_year, title ASC;";
+
+    }
     connection.query(sql, (err, result)=> {
       if(err){
         throw err
       }else{
-        res.render('movies', {films:result});
+        res.render('movies', {films:result, filter});
       };
     });
   };
 
   selectMovies = (req, res) => {
     const {order_by} = req.body;
-    console.log(order_by);
 
     let sql = `SELECT film_id, title, poster 
               FROM film 
@@ -28,7 +40,6 @@ class MoviesController{
       if(err){
         throw err
       }else{
-        console.log(result);
         res.render('moviesSelect', {films:result});
       };
     });
@@ -129,6 +140,7 @@ class MoviesController{
     }
   }
 
+  //NO SIRVE
   showAddMovieSelect = (req, res)=> {
     let sql = 'SELECT user_id, user_name, last_name FROM user WHERE user_is_deleted = 0';
       connection.query(sql, (err, result)=>{
@@ -140,6 +152,7 @@ class MoviesController{
       });
   };
 
+  //NO SIRVE
   addMovieSelect = (req, res) => {
     const {
       user_id,
@@ -150,34 +163,51 @@ class MoviesController{
       release_year,
     } = req.body
 
+    let sql = 'SELECT user_id, user_name, last_name FROM user WHERE user_is_deleted = 0';
+
     //validación: verificación simple de que los campos obigatorios no 
     // lleguen vacios
-
     let pattern_year = /^\d*$/;
     let pattern_rating = /^[1-5]$/;
 
     if (!title || !rating) {
-    res.render("formNewMovieSelect", {
-      message:
-        "You must fill in all required fields.",
-    });
+      /* llamada bd */
+      connection.query(sql, (err1, result1)=>{
+        if(err1){
+          throw err1
+        }else{
+          res.render('formNewMovieSelect', {
+            users:result1, 
+            message: "You must fill in all required fields."
+          });
+        };
+      });
 
     } else if (pattern_year.test(release_year) == false) {
-      res.render("formNewMovieSelect", {
-        message: "The year field must be a number.",
+      connection.query(sql, (err2, result2)=>{
+        if(err2){
+          throw err2
+        }else{
+          res.render('formNewMovieSelect', {
+            users:result2, 
+            message: "The year field must be a number."
+          });
+        };
       });
 
     } else if (pattern_rating.test(rating) == false) {
-      res.render("formNewMovieSelect", {
-        message: "The rating must be between 1 and 5.",
+      connection.query(sql, (err3, result3)=>{
+        if(err3){
+          throw err3
+        }else{
+          res.render('formNewMovieSelect', {
+            users:result3, 
+            message: "The rating must be between 1 and 5."
+          });
+        };
       });
 
     } else {
-      //guardar los datos en la base de datos
-      let sql = `INSERT INTO film 
-      (user_id, title, review, rating, format, release_year)
-      VALUES (?,?,?,?,?,?)`;
-
       let values = [
         user_id,
         title,
@@ -200,20 +230,21 @@ class MoviesController{
           release_year,
           req.file.filename,
         ];
-      }
+      };
+
       connection.query(sql, values, (errSql, result) => {
         if (errSql) {
           if (errSql.errno == 1062) {
             res.render("formNewMovieSelect", { message: "Duplicate email." });
           } else {
             throw errSql;
-          }
+          };
         } else {
           res.redirect(`/users/userProfile/${user_id}`);
-        }
+        };
       });
-    }
-  }
+    };
+  };
 
   showEditMovie = (req, res) =>{
     const {film_id} = req.params;
@@ -225,17 +256,16 @@ class MoviesController{
       }else{
         res. render("formEditMovie", {film:result[0]})
       }
-    })
-  }
+    });
+  };
 
   editMovie = (req, res) => {
     const {title, review, rating, format, release_year} = req.body;
     const {film_id, user_id} = req.params;
-    let film =[film_id, user_id,title, review, rating, format, release_year];
+    let film = {film_id, user_id,title, review, rating, format, release_year};
 
     //validación: verificación simple de que los campos obigatorios no 
     // lleguen vacios
-
     let pattern_year = /^\d*$/;
     let pattern_rating = /^[1-5]$/;
 
@@ -260,15 +290,27 @@ class MoviesController{
       let values = [title, review, rating, format, release_year, film_id];
       
       if(req.file){
-          sql = 'UPDATE film SET title = ?, review = ?, rating = ?, format = ?, release_year = ? , poster=? WHERE film_id=?';
-          values = [title, review, rating, format, release_year, req.file.filename, film_id]
+        //si se cambia la foto, borrar la antigua de la carpeta
+        let sqlPoster = `SELECT poster FROM film WHERE film_id= ${film_id}`
+        connection.query(sqlPoster, (err, result)=>{
+          if(err){
+            throw err
+          }else{
+            const {poster} = result[0];
+            console.log(poster);
+            deleteFile(poster,"movies");
+          };
+        });
+
+        sql = 'UPDATE film SET title = ?, review = ?, rating = ?, format = ?, release_year = ? , poster=? WHERE film_id=?';
+        values = [title, review, rating, format, release_year, req.file.filename, film_id]
       };
       connection.query(sql, values, (err, result)=>{
-          if(err){
-              throw err;
-          }else{
-            res.redirect(`/users/userProfile/${user_id}`);
-          };
+        if(err){
+            throw err;
+        }else{
+          res.redirect(`/users/userProfile/${user_id}`);
+        };
       });
     }
   };
