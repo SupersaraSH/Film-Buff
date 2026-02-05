@@ -9,7 +9,6 @@ class IndexController{
       if(err){
         throw err;
       } else {
-        console.log("result showHOMEEEEEE", result);
         res.render("index", {users: result})
       }
     });

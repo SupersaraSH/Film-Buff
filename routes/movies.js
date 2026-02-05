@@ -2,6 +2,11 @@ const express = require('express');
 const moviesControllers = require('../controllers/moviesControllers');
 
 const uploadImage = require('../middlewares/uploadImage');
+const addMovieVerifyForm = require('../middlewares/addMovieVerifyForm');
+const addMovieSchema = require('../schemas/addMovieSchema');
+const addMovieSelectVerifyForm = require('../middlewares/addMovieSelectVerifyForm');
+const addMovieSelectSchema = require('../schemas/addMovieSelectSchema');
+const editMovieVerifyForm = require('../middlewares/editMovieVerifyForm');
 const router = express.Router();
 
 /* GET movies page. */
@@ -14,22 +19,22 @@ router.post('/moviesSelect', moviesControllers.selectMovies);
 router.get('/movie/:film_id', moviesControllers.showOneMovie);
 
 /* show form to add movie */
-router.get('/addMovie/:user_id', moviesControllers.showAddMovie);
+router.get('/addMovie/:user_id', moviesControllers.showAddMovieZod);
 
 /*  send form data to add movie */
-router.post('/addMovie/:user_id', uploadImage("movies"), moviesControllers.addMovie);
+router.post('/addMovie/:user_id', uploadImage("movies"), addMovieVerifyForm(addMovieSchema), moviesControllers.addMovieZod);
 
 /* show form to add movie */
-router.get('/addMovieSelect', moviesControllers.showAddMovieSelect);
+router.get('/addMovieSelect', moviesControllers.showAddMovieSelectZod);
 
 /*  send form data to add movie with select */
-router.post('/addMovieSelect', uploadImage("movies"), moviesControllers.addMovieSelect);
+router.post('/addMovieSelect', uploadImage("movies"), addMovieSelectVerifyForm(addMovieSelectSchema), moviesControllers.addMovieSelectZod);
 
 /* show form to edit movie */
-router.get('/editMovie/:film_id', moviesControllers.showEditMovie);
+router.get('/editMovie/:film_id', moviesControllers.showEditMovieZod);
 
 /*  send form data to edit movie */
-router.post('/editMovie/:film_id/:user_id', uploadImage("movies"), moviesControllers.editMovie);
+router.post('/editMovie/:film_id/:user_id', uploadImage("movies"), editMovieVerifyForm(addMovieSchema), moviesControllers.editMovieZod);
 
 //borra una película.
 router.get('/delMovie/:film_id/:user_id/:file', moviesControllers.delMovie);

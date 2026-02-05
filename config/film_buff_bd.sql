@@ -36,7 +36,7 @@ select * from film;
 INSERT INTO `film_buff`.`film` (`film_id`, `user_id`, `title`, `review`, `rating`, `format`, `release_year`) VALUES ('1', '1', 'titanic', 'llorar', '4', 'dvd', '2003');
 
 SELECT film_id, title, poster FROM film WHERE film_is_deleted = 0 order by title asc;
-SELECT release_year, title
+SELECT rating, title
 FROM film
 WHERE film_is_deleted = 0
-ORDER BY release_year ASC, title ASC;
+ORDER BY rating ASC, title ASC;

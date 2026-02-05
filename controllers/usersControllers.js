@@ -137,6 +137,63 @@ class usersController{
     }
   }
 
+  
+  showRegisterZod = (req, res) =>{
+    res.render("formRegister", {errores:[]});
+  };
+
+  registerZod = (req, res) => {
+    const {
+      user_name,
+      last_name,
+      email,
+      description,
+      password,
+      repPassword,
+    } = req.body
+    
+    //encriptar la password
+    let saltRounds = 8;
+    bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+      if (err) {
+        throw err;
+      } else {
+        //guardar los datos en la base de datos
+        let sql = `INSERT INTO user 
+      (user_name, last_name, email, description, password) 
+      VALUES (?,?,?,?,?)`;
+        let values = [
+          user_name,
+          last_name,
+          email,
+          description,
+          hashedPassword,
+        ];
+
+        if (req.file) {
+          sql = `INSERT INTO user 
+        (user_name, last_name, email, description, password, avatar) 
+        VALUES (?,?,?,?,?,?)`;
+          values = [
+            user_name,
+            last_name,
+            email,
+            description,
+            hashedPassword,
+            req.file.filename,
+          ];
+        }
+        connection.query(sql, values, (err, result) => {
+          if (err) {
+            throw err;
+          } else {
+            res.redirect(`/#addicts`);
+          }
+        });
+      }
+    });
+  }
+
   showLogin = (req, res) =>{
     res.render("formLogin");
   };
@@ -194,6 +251,42 @@ class usersController{
         };
       });
     };
+  };
+
+  showEditUserZod = (req, res) =>{
+    const {user_id} = req.params;
+
+    let sql = 'SELECT * FROM user WHERE user_id = ?'
+    connection.query(sql, [user_id], (err, result)=>{
+      if(err){
+        throw err
+      }else{
+        res. render("formEditUser", {user:result[0], errores:[]})
+      }
+    });
+  };
+  
+  editUserZod = (req, res) => {
+    const {user_name, last_name, description} = req.body;
+    const {user_id} = req.params;
+    let user = {user_name, last_name, description};
+
+    let sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ? WHERE user_id=?';
+    let values = [user_name, last_name, description, user_id];
+
+    if(req.file){
+      sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ?, avatar = ? WHERE user_id=?';
+      values = [user_name, last_name, description, req.file.filename, user_id];
+    };
+
+    connection.query(sql, values, (err, result)=>{
+      if(err){
+          throw err;
+      }else{
+        console.log("**************************ccvx*********************************")
+        res.redirect(`/users/userProfile/${user_id}`);
+      };
+    });
   };
 
 };

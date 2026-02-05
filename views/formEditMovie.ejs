@@ -35,6 +35,7 @@
                     name="title"
                     value="<%= film.title %>"
                   />
+                  <p class="msg-err"><%= errores?.find(e=>e.field === "title")?.message %></p>
                 </div>
                 <div class="mb-3">
                   <label for="inputReview" class="form-label"
@@ -47,6 +48,7 @@
                     name="review"
                     value="<%= film.review %>"
                   />
+                  <p class="msg-err"><%= errores?.find(e=>e.field === "review")?.message %></p>
                 </div>
                 <div class="mb-3">
                   <label for="iputRrating" class="form-label"
@@ -59,6 +61,7 @@
                     name="rating"
                     value="<%= film.rating %>"
                   />
+                  <p class="msg-err"><%= errores?.find(e=>e.field === "rating")?.message %></p>
                 </div>
                 <div class="mb-3">
                   <label for="inputFormat" class="form-label"
@@ -71,6 +74,7 @@
                     name="format"
                     value="<%= film.format %>"
                   />
+                  <p class="msg-err"><%= errores?.find(e=>e.field === "format")?.message %></p>
                 </div>
                 <div class="mb-3">
                   <label for="inputRelease" class="form-label"
@@ -83,6 +87,7 @@
                     name="release_year"
                     value="<%= film.release_year %>"
                   />
+                  <p class="msg-err"><%= errores?.find(e=>e.field === "release_year")?.message %></p>
                 </div>
                 <div class="mb-4">
                   <label for="inputPoster" class="form-label image">Add image</label>
@@ -91,9 +96,10 @@
                     class="form-control d-none"
                     id="inputPoster"
                     name="img"/>
+                    <p class="msg-err"><%= errores?.find(e=>e.field === "file")?.message %></p>
                 </div>
-                  <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
-                  <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
+                  
+                <div class="d-flex justify-content-center  gap-0 gap-sm-1 gap-lg-5">
                     <button type="submit" class="btn" >Aceptar</button>
                     <button
                       type="button"

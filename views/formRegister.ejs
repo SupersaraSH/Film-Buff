@@ -32,6 +32,7 @@
                   aria-describedby="user name"
                   name="user_name"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "user_name")?.message %></p>
               </div>
               <div class="mb-3">
                 <label for="inputLastName" class="form-label"
@@ -43,6 +44,7 @@
                   aria-describedby="last name"
                   name="last_name"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "last_name")?.message %></p>
               </div>
               <div class="mb-3">
                 <label for="inputEmail" class="form-label"
@@ -55,6 +57,7 @@
                   aria-describedby="emailHelp"
                   name="email"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "email")?.message %></p>
               </div>
               <div class="mb-3">
                 <label for="inputDescription" class="form-label"
@@ -67,30 +70,33 @@
                   aria-describedby="descripionHelp"
                   name="description"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "description")?.message %></p>
               </div>
               <div class="mb-3">
                 <label for="inputPass" class="form-label"
                 >Password</label
                 >
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="inputPass"
                   aria-describedby="passHelp"
                   name="password"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "password")?.message %></p>
               </div>
               <div class="mb-3">
                 <label for="repPass" class="form-label"
-                >Repite Password</label
+                >Repeat Password</label
                 >
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="inputRepPass"
                   aria-describedby="repPassHelp"
                   name="repPassword"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "repPassword")?.message %></p>
               </div>
               <div class="mb-1">
                 <label for="inputImg" class="form-label image">Add image</label>
@@ -100,8 +106,9 @@
                   id="inputImg"
                   name="img"
                 />
+                <p class="msg-err"><%= errores?.find(e=>e.field === "file")?.message %></p>
               </div>
-              <p class="msg-err"><%= typeof message != 'undefined'?message:null %></p>
+              
               <div class="d-flex justify-content-center gap-0 gap-sm-1 gap-lg-5">
                 <button type="submit" class="btn" >Aceptar</button>
                 <button
