@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const usersControllers = require('../controllers/usersControllers');
 const uploadImage = require('../middlewares/uploadImage');
-const verifyForm = require('../middlewares/verifyForm.js');
 
 const editUserVerifyForm = require('../middlewares/editUserverifyForm.js');
 const registerVerifyForm = require('../middlewares/registerVerifyForm.js');
 const registerSchema = require('../schemas/registerSchema.js');
 const editUserSchema = require('../schemas/editUserSchema.js');
+const verifyToken = require('../middlewares/verifyToken.js');
 
 /* GET users page. */
 /* users */
@@ -23,8 +23,12 @@ router.post('/register', uploadImage("users"), registerVerifyForm(registerSchema
 /* SIN TERMINAR */
 router.get('/login', usersControllers.showLogin);
 
-/* show new login form */
+router.post('/login', usersControllers.login);
+
+/* show new userProfile form */
 router.get('/userProfile/:user_id', usersControllers.showProfile);
+
+router.get('/userProfileToken/:user_id', verifyToken, usersControllers.showProfileToken);
 
 router.get('/editUser/:user_id', usersControllers.showEditUserZod);
 

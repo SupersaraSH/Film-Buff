@@ -13,8 +13,6 @@ const router = express.Router();
 /* all movies */
 router.get('/', moviesControllers.showMovies);
 
-router.post('/moviesSelect', moviesControllers.selectMovies);
-
 /* one movies */
 router.get('/movie/:film_id', moviesControllers.showOneMovie);
 
