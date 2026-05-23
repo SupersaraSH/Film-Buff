@@ -3,7 +3,7 @@ const router = express.Router();
 const usersControllers = require('../controllers/usersControllers');
 const uploadImage = require('../middlewares/uploadImage');
 
-const editUserVerifyForm = require('../middlewares/editUserverifyForm.js');
+const editUserVerifyForm = require('../middlewares/editUserVerifyForm.js');
 const registerVerifyForm = require('../middlewares/registerVerifyForm.js');
 const registerSchema = require('../schemas/registerSchema.js');
 const editUserSchema = require('../schemas/editUserSchema.js');
