@@ -25,6 +25,8 @@ router.get('/login', usersControllers.showLogin);
 
 router.post('/login', usersControllers.login);
 
+router.get('/logout', usersControllers.logout);
+
 /* show new userProfile form */
 router.get('/userProfile/:user_id', usersControllers.showProfile);
 

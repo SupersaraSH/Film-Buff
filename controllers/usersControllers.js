@@ -10,6 +10,11 @@ class usersController{
     res.render("formLogin", {errores:[]});
   }
 
+  logout = (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/");
+  }
+
   login = (req, res) =>{
     console.log("loginnnn: req.body", req.body);
     const { email, password } = req.body;

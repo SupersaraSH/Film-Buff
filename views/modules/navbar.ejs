@@ -22,9 +22,14 @@
 
       </ul>
       <div class="d-flex ms-auto column-gap-5">
-        <a class="btn" href="/users/register">Register</a>
-        <a class="btn" href="/users/login">Login</a>
-        <a class="btn" href="/movies/addMovieSelect">Add movie</a>
+        <% if (currentUser) { %>
+          <a class="btn" href="/users/userProfileToken/<%= currentUser.user_id %>">Mi perfil</a>
+          <a class="btn" href="/users/logout">Logout</a>
+          <a class="btn" href="/movies/addMovieSelect">Add movie</a>
+        <% } else { %>
+          <a class="btn" href="/users/register">Register</a>
+          <a class="btn" href="/users/login">Login</a>
+        <% } %>
       </div>
     </div>
   </div>
