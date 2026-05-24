@@ -40,7 +40,7 @@
               <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                 <div class="mx-auto movie-box">
                   <a href="/movies/movie/<%= film.film_id %>">
-                    <img class="w-100" src="/images/movies/<%= film.poster?film.poster:'film.png' %>"
+                    <img class="w-100" src="<%= film.poster || '/images/movies/film.png' %>"
                     alt="film image">
                   </a>
                 </div>

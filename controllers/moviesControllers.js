@@ -83,7 +83,7 @@ class MoviesController{
         rating,
         format,
         release_year,
-        req.file.filename,
+        req.file.path,
       ];
     }
     connection.query(sql, values, (errSql, result) => {
@@ -141,7 +141,7 @@ class MoviesController{
         rating,
         format,
         release_year,
-        req.file.filename,
+        req.file.path,
       ];
     };
 
@@ -189,7 +189,7 @@ class MoviesController{
       });
 
       sql = 'UPDATE film SET title = ?, review = ?, rating = ?, format = ?, release_year = ? , poster=? WHERE film_id=?';
-      values = [title, review, rating, format, release_year, req.file.filename, film_id]
+      values = [title, review, rating, format, release_year, req.file.path, film_id]
     };
     connection.query(sql, values, (err, result)=>{
       if(err){
@@ -295,7 +295,7 @@ class MoviesController{
           rating,
           format,
           release_year,
-          req.file.filename,
+          req.file.path,
         ];
       }
       connection.query(sql, values, (errSql, result) => {
@@ -398,7 +398,7 @@ class MoviesController{
           rating,
           format,
           release_year,
-          req.file.filename,
+          req.file.path,
         ];
       };
 
@@ -473,7 +473,7 @@ class MoviesController{
         });
 
         sql = 'UPDATE film SET title = ?, review = ?, rating = ?, format = ?, release_year = ? , poster=? WHERE film_id=?';
-        values = [title, review, rating, format, release_year, req.file.filename, film_id]
+        values = [title, review, rating, format, release_year, req.file.path, film_id]
       };
       connection.query(sql, values, (err, result)=>{
         if(err){

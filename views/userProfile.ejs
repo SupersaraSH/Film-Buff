@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-12  col-lg-6">
               <div class="center">
-                <img class="w-100" src="/images/users/<%= user.avatar?user.avatar:'default1.jpg' %>" alt="">
+                <img class="w-100" src="<%= user.avatar || '/images/users/default1.jpg' %>" alt="">
               </div>
             </div>
             <div class="col-12  col-lg-6">
@@ -41,7 +41,7 @@
             <div class="col-12 col-md-6 col-xl-4">
               <div class="card mx-auto">
                 <a href="/movies/movie/<%= film.film_id %>">
-                  <img class="w-100" src="/images/movies/<%= film.poster?film.poster:'film.png' %>"
+                  <img class="w-100" src="<%= film.poster || '/images/movies/film.png' %>"
                   alt="film image">
                 </a>
                 <div class="card-body">

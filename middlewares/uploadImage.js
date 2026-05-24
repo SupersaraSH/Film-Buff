@@ -1,19 +1,23 @@
 const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 
-const uploadImage = (folder)=>{
-    //configurar donde y como quiero guardar la foto
-    const storage = multer.diskStorage({
-        destination: `public/images/${folder}`,
-        filename : function(req, file, cb){
-            let originalName = file.originalname;
-            let finalName = Date.now() + '-'+ originalName
-            cb(null, finalName)
-        }
-    });
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-    //guarda la foto en la ruta descrita arriba y con el nombre que hemos configurado
-    const upload = multer({storage:storage}).single("img");
-    return upload;
-}
+const uploadImage = (folder) => {
+  const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+      folder: `film-buff/${folder}`,
+      allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+    },
+  });
+
+  return multer({ storage }).single('img');
+};
 
 module.exports = uploadImage;

@@ -245,7 +245,7 @@ class usersController{
             email,
             description,
             hashedPassword,
-            req.file.filename,
+            req.file.path,
           ];
         }
         connection.query(sql, values, (err, result) => {
@@ -282,7 +282,7 @@ class usersController{
 
     if(req.file){
       sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ?, avatar = ? WHERE user_id=?';
-      values = [user_name, last_name, description, req.file.filename, user_id];
+      values = [user_name, last_name, description, req.file.path, user_id];
     };
 
     connection.query(sql, values, (err, result)=>{
@@ -350,7 +350,7 @@ class usersController{
               email,
               description,
               hashedPassword,
-              req.file.filename,
+              req.file.path,
             ];
           }
           connection.query(sql, values, (errSql, result) => {
@@ -411,7 +411,7 @@ class usersController{
         });
 
         sql = 'UPDATE user SET user_name = ?, last_name = ?, description = ?, avatar = ? WHERE user_id=?';
-        values = [user_name, last_name, description, req.file.filename, user_id];
+        values = [user_name, last_name, description, req.file.path, user_id];
       };
 
       connection.query(sql, values, (err, result)=>{

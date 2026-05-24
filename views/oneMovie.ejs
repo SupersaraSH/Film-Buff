@@ -18,7 +18,7 @@
             <h2 class="pb-4"><%= film.title %></h2>
             <div class="col-12 col-lg-5 p-0">
               <div class="card mx-auto">
-                <img class="w-100" src="/images/movies/<%= film.poster?film.poster:'film.png' %>" alt="">
+                <img class="w-100" src="<%= film.poster || '/images/movies/film.png' %>" alt="">
               </div>
             </div>
             <div class="col-12 col-lg-5 p-5 p-lg-0">
