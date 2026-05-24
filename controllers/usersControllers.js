@@ -204,7 +204,7 @@ class usersController{
   };
 
   showRegisterZod = (req, res) =>{
-    res.render("formRegister", {errores:[]});
+    res.render("formRegister", {formData: {}, errores:[]});
   };
 
   registerZod = (req, res) => {
