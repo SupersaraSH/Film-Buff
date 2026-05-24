@@ -43,7 +43,7 @@ class MoviesController{
 
   showAddMovieZod = (req, res)=> {
     const {user_id} = req.params;
-    res.render("formNewMovie", {user_id, errores:[]});
+    res.render("formNewMovie", {user_id, user: {}, errores:[]});
   };
 
   addMovieZod = (req, res) => {
