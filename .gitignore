@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# uploaded images (keep folder structure via .gitkeep)
+public/images/movies/*
+public/images/users/*
+!public/images/movies/.gitkeep
+!public/images/users/.gitkeep
