@@ -90,7 +90,7 @@ class MoviesController{
       if (errSql) {
         throw errSql;
       } else {
-        res.redirect(`/users/userProfile/${user_id}`);
+        res.redirect(`/users/userProfileToken/${user_id}`);
       }
     });
   };
@@ -149,7 +149,7 @@ class MoviesController{
       if (errSql) {
           throw errSql;
       } else {
-        res.redirect(`/users/userProfile/${user_id}`);
+        res.redirect(`/users/userProfileToken/${user_id}`);
       };
     });
   };
@@ -195,7 +195,7 @@ class MoviesController{
       if(err){
           throw err;
       }else{
-        res.redirect(`/users/userProfile/${user_id}`);
+        res.redirect(`/users/userProfileToken/${user_id}`);
       };
     });
   };
@@ -211,7 +211,7 @@ class MoviesController{
           if (file != "film.png") {
             deleteFile(file,"movies");
           }
-            res.redirect(`/users/userProfile/${user_id}`);
+            res.redirect(`/users/userProfileToken/${user_id}`);
         }
     })
   }
@@ -225,7 +225,7 @@ class MoviesController{
       if(err){
         throw err
       }else{
-        res.redirect(`/users/userProfile/${user_id}`);
+        res.redirect(`/users/userProfileToken/${user_id}`);
       }
     })
   }
@@ -306,7 +306,7 @@ class MoviesController{
             throw errSql;
           }
         } else {
-          res.redirect(`/users/userProfile/${user_id}`);
+          res.redirect(`/users/userProfileToken/${user_id}`);
         }
       });
     }
@@ -410,7 +410,7 @@ class MoviesController{
             throw errSql;
           };
         } else {
-          res.redirect(`/users/userProfile/${user_id}`);
+          res.redirect(`/users/userProfileToken/${user_id}`);
         };
       });
     };
@@ -479,7 +479,7 @@ class MoviesController{
         if(err){
             throw err;
         }else{
-          res.redirect(`/users/userProfile/${user_id}`);
+          res.redirect(`/users/userProfileToken/${user_id}`);
         };
       });
     }

@@ -290,7 +290,7 @@ class usersController{
           throw err;
       }else{
         console.log("**************************ccvx*********************************")
-        res.redirect(`/users/userProfile/${user_id}`);
+        res.redirect(`/users/userProfileToken/${user_id}`);
       };
     });
   };
