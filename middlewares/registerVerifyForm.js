@@ -29,12 +29,10 @@ const registerVerifyForm = (schema) => (req, res, next) => {
       };
     };
 
-  res.render("formRegister", {errores: error.issues.map((e)=> {
-    return {
-      field: e.path[0],
-      message: e.message
-    };
-    })});
+  res.render("formRegister", {
+    formData: req.body,
+    errores: error.issues.map((e) => ({ field: e.path[0], message: e.message }))
+  });
     
   };
 }
